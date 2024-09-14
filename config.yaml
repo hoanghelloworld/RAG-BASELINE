@@ -1,0 +1,33 @@
+# Configuration
+
+loader:
+  paths: 
+    - "/Users/David/Downloads/Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.pdf"
+
+splitter:
+  method: "recursive"
+  chunk_size: 512
+  chunk_overlap: 128
+
+database:
+  path: "data/db"
+
+pipelines:
+  openai:
+    embedding: "text-embedding-3-small"
+    max_tokens: 8191
+    llm: "gpt-3.5-turbo"
+
+  local:
+    embedding: "sentence-transformers/all-MiniLM-L6-v2"
+    max_tokens: 512
+    llm: "llama3"
+
+output:
+  directory: "data/results"
+
+evaluators:
+  order_unaware:
+    k: 3
+  order_aware:
+    k: 3
